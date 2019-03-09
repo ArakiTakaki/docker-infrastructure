@@ -10,19 +10,20 @@ require software
 
 ## started mysql
 
-2. `$ docker-compose -d rdb`
+- `$ docker-compose -d rdb`
 
 ### healt hcheck
 
-1. `$ docker-compose exec rdb bash`
-2. `$ mysql -u root -p` -> type of `.env` password
-3. `> show databases`
+- `$ docker-compose exec rdb bash`
+- `$ mysql -u root -p` -> type of `.env` password
+- `> show databases`
 
 ## started mongo
 
-2. `$ docker-compose -d mongo`
+- `$ docker-compose -d mongo`
 
 ### healt hcheck
 
-1. `$ mongo`
-2. `> db.posts.count()`
+- `$ docker-compose exec mongo bash`
+- `$ mongo`
+- `> db.posts.count()`
