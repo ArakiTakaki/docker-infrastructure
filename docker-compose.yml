@@ -1,0 +1,50 @@
+version: "3"
+services:
+    # MY_SQL
+    rdb:
+        image: mysql:5.7
+        ports:
+            - "3306:3306"
+        environment:
+            - MYSQL_DATABASE=${DB_NAME}
+            - MYSQL_ROOT_PASSWORD=${DB_PASSWORD}
+        volumes:
+            - ./rdb/conf/:/etc/mysql/conf.d:cached
+            - ./rdb/data/:/var/lib/mysql:cached
+        env_file: .env
+
+    # Mongo
+    mongo:
+        image: mongo:latest
+        ports:
+            - "2017:2017"
+        container_name: mongodb
+        environment:
+            - MONGODB_USER=${DB_USER}
+            - MONGODB_PASS=${DB_PASSWORD}
+        volumes:
+            - ./mongodb/data:/data/db
+        command: mongod --smallfiles
+
+    # Dynamo
+    # docker-compose [down|stop] 地点でデータが消えるので注意
+    dynamo:
+        image: amazon/dynamodb-local:latest
+        ports:
+            - "8000:8000"
+        command: -jar DynamoDBLocal.jar -dbPath /data
+        volumes:
+            - ./dynamo/data:/data
+
+    # DynamoDBのアドミンでの操作画面
+    dynamo-admin:
+        image: instructure/dynamo-local-admin:latest
+        networks:
+            - default
+        ports:
+            - 8011:8001
+        depends_on:
+            - "dynamo"
+
+# mongo default port :27017
+
