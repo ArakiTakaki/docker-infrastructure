@@ -27,3 +27,11 @@ require software
 - `$ docker-compose exec mongo bash`
 - `$ mongo`
 - `> db.posts.count()`
+
+## started dynamo
+
+- `$ docker-compose up -d dynamo-admin`
+
+### healt hcheck
+
+- `$ open http://localhost:8011`
