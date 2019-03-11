@@ -3,6 +3,7 @@
 require software
 - docker
 
+## getting docker-compose
 
 1. `$ git clone https://github.com/ArakiTakaki/docker-infrastructure`
 2. `$ cd docker-infrastructure`
