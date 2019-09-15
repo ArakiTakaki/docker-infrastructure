@@ -18,5 +18,4 @@ export const createIndex = (host: string, indexList: Array<Index>): Promise<void
         });
     });
   });
-
 }
