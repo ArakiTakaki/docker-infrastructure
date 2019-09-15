@@ -3,6 +3,7 @@
 require software
 - docker
 
+## getting docker-compose
 
 1. `$ git clone https://github.com/ArakiTakaki/docker-infrastructure`
 2. `$ cd docker-infrastructure`
@@ -27,3 +28,11 @@ require software
 - `$ docker-compose exec mongo bash`
 - `$ mongo`
 - `> db.posts.count()`
+
+## started dynamo
+
+- `$ docker-compose up -d dynamo-admin`
+
+### healt hcheck
+
+- `$ open http://localhost:8011`
