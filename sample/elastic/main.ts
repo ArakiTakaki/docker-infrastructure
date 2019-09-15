@@ -1,46 +1,19 @@
 import { Client } from '@elastic/elasticsearch';
 import { ErrorConsole } from './lib/errors';
-const client = new Client({ node: 'http://localhost:9200' })
+
+import { ELASTIC_HOST } from './constants';
+const client = new Client({ node: ELASTIC_HOST.DEVELOPMENT })
 
 // インデックスの作成サンプル
 const main = async () => {
   try {
-    // Let's start by indexing some data
-    await client.index({
-      index: 'game-of-thrones',
-      // type: '_doc', // uncomment this line if you are using Elasticsearch ≤ 6
-      body: {
-        character: 'Ned Stark',
-        quote: 'Winter is coming.'
-      }
-    })
-
-    await client.index({
-      index: 'game-of-thrones',
-      // type: '_doc', // uncomment this line if you are using Elasticsearch ≤ 6
-      body: {
-        character: 'Daenerys Targaryen',
-        quote: 'I am the blood of the dragon.'
-      }
-    })
-
-    await client.index({
-      index: 'game-of-thrones',
-      // type: '_doc', // uncomment this line if you are using Elasticsearch ≤ 6
-      body: {
-        character: 'Tyrion Lannister',
-        quote: 'A mind needs books like a sword needs a whetstone.'
-      }
-    })
-
-    // here we are forcing an index refresh, otherwise we will not
-    // get any result in the consequent search
-    await client.indices.refresh({ index: 'game-of-thrones' })
-
-    // Let's search!
     const { body } = await client.search({
       index: '*',
+      // index: 'user',
+      // index: 'game-of-thrones',
       // type: '_doc', // uncomment this line if you are using Elasticsearch ≤ 6
+      // from: 5, // 5件後
+      size: 100, // 取得するサイズ
       body: {
         // query: {
         //   // match: { quote: '' }
@@ -48,7 +21,8 @@ const main = async () => {
       }
     })
 
-    console.log(body.hits.hits)
+    console.log(JSON.stringify(body))
+    console.log(body.hits.hits.length)
   } catch (err) {
     ErrorConsole(err);
   }

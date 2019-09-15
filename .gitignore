@@ -1,3 +1,4 @@
 .env
 mongodb/data
 dynamo/data
+es-data/nodes

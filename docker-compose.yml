@@ -49,14 +49,14 @@ services:
 
     # https://qiita.com/matyahiko2831/items/0b07a7577142c00d50e7
     # Elasticsserch
-    elasticserch:
+    elasticsearch:
         image: 'elasticsearch:6.5.0'
         ports:
             - "9200:9200"
         expose:
             - 9300
         volumes:
-            - ./es-data/:/usr/share/elasticserch/data
+            - ./es-data/:/usr/share/elasticsearch/data
 
 # mongo default port :27017
 

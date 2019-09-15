@@ -4,7 +4,8 @@
   "main": "index.js",
   "license": "MIT",
   "scripts": {
-    "start": "ts-node ./main.ts"
+    "start": "ts-node ./main.ts",
+    "seed": "ts-node ./seeding.ts"
   },
   "devDependencies": {
     "@elastic/elasticsearch": "^7.3.0",
