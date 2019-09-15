@@ -36,3 +36,12 @@ require software
 ### healt hcheck
 
 - `$ open http://localhost:8011`
+
+
+## started elasticsearch
+
+- `$ docker-compose up -d elasticsearch-admin`
+
+- ports
+    - elasticsearch-root http://localhost:9300
+    - elasticsearch-admin http://localhost:5601
