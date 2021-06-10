@@ -1,6 +1,14 @@
 version: "3.3"
 
 services:
+    # REDIS
+    redis:
+        image: "redis:latest"
+        ports:
+            - "6379:6379"
+        volumes:
+            - "./data/redis:/data"
+
     # MY_SQL
     rdb:
         image: mysql:5.7
